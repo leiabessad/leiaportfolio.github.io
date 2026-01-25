@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Leïa Bessad</title>
+  <link rel="stylesheet" href="2025site_page.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navigation principale">
+      <button class="close-btn" id="closeBtn" aria-label="Fermer le menu">✕</button>
+
+      <div>
+        <a href="nouveausite.html">
+          <img src="photo/logo2.png" class="logo" alt="Leïa Bessad">
+        </a>        <ul class="project-list">
+          <li><a href="hellmann.html">Ain't Your "Mayo"</a></li>
+          <li><a href="Easylove.html" class="active">Easy Love Story</a></li>
+          <li><a href="talentueux.html">Les Talentueux</a></li>
+          <li><a href="martine.html">Martine Cosmetics</a></li>
+          <li><a href="fenty.html">Fenty Skin</a></li>
+          <li><a href="VCF.html">Vintage Computer Festival</a></li>
+          <li><a href="femmesphotos.html">Que veulent les femmes ?</a></li>
+          <li><a href="laika.html">Laïka</a></li>
+          <li><a href="DMW.html">Drink More Water</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <ul class="info-list">
+          <li><a href="quizz.html" >SUIS-JE FAITE POUR VOUS ?</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="apropos.html#contact">Contact</a></li>
+        </ul>
+      </div>
+   
+    </aside>
+
+    <!-- Hamburger bouton -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+
+    <!-- Galerie principale -->
+    <main class="gallery">
+      <h1>Easy Love Story</h1>
+      <div class="tags-container">
+        <!-- Catégories du projet -->
+        <span class="tag category">Activation</span>
+        <span class="tag category">Interface</span>
+        <!-- Prix reçus -->
+      </div>
+      EasyJet veut remédier à sa baisse drastique des réservations de vol hors-saison et décide de lancer une
+        campagne sur un réseau social.
+      
+        <section class="concept">
+       
+        <div class="concept-item">
+
+          <h3>Insight</h3>
+         
+          <p>
+            Les périodes estivales attirent beaucoup de monde, ce qui créé de la concurrence lorsqu'il s'agit de trouver
+            un amour de vacance.
+          </p>
+        </div>
+
+        <div class="concept-item">
+          <h3>Idée</h3>
+          <p>
+           Les meilleures vacances pour pécho sont quand les autres n'y sont pas.
+          </p>
+        </div>
+
+        <div class="concept-item">
+          <h3>Exécution</h3>
+          <p>
+            EasyJet s'associe avec LE réseau social où il y a le plus de concurrence
+            amoureuse… Tinder. <br> Ensemble, ils créent la campagne Easy Love Story, 
+            qui met en avant les voyages hors saison pour rencontrer votre amour de vacances sans compétition.
+          </p>
+        </div>
+      </section>
+
+      <div class="image-grid">
+
+        <!-- Vidéo YouTube (horizontale) -->
+        <div class="image-grid-item col-6">
+          <div class="video-container video-horizontal">
+            <iframe src="https://www.youtube.com/embed/rBWj40cAiBI?si=_HRYKv8pbRbtnHYz" title="Easy Love Story Case"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Vidéo verticale locale -->
+        <div class="image-grid-item col-2">
+          <div class="video-container video-vertical">
+            <video src="videos/easyjet_interface2.mp4" autoplay loop muted playsinline></video>
+          </div>
+        </div>
+
+        <div class="image-grid-item col-4">
+          <div class="video-container video-horizontal">
+            <video src="videos/DATECAM_easy.mp4" controls></video>
+          </div>
+        </div>
+        
+
+
+
+      </div>
+
+      <div class="next-project">
+        <a id="nextProjectLink" href="queveulent.html">Projet suivant →</a>
+      </div>
+
+
+
+
+    </main>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <div class="lightbox-arrow left" id="prevArrow">❮</div>
+    <img id="lightboxImg" src="" alt="Zoom image">
+    <div class="lightbox-arrow right" id="nextArrow">❯</div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const prevArrow = document.getElementById('prevArrow');
+    const nextArrow = document.getElementById('nextArrow');
+    const images = document.querySelectorAll('.image-grid-item img');
+    let currentIndex = 0;
+
+    // Menu mobile
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    function closeMenu() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    overlay.addEventListener('click', closeMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Lightbox - ouvrir
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    // Lightbox - navigation
+    function showImage(index) {
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+    }
+
+    prevArrow.addEventListener('click', () => showImage(currentIndex - 1));
+    nextArrow.addEventListener('click', () => showImage(currentIndex + 1));
+
+    // Navigation clavier
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+
+    // Lightbox - fermer
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    const projects = [
+  "hellmann.html",
+  "Easylove.html",
+  "Talentueux.html",
+  "femmesphotos.html",
+  "VCF.html",
+  "project-5.html",
+  "project-6.html",
+  "DMW.html"
+];
+
+
+    const currentUrl = window.location.pathname.split("/").pop();
+    const currentIndexProject = projects.indexOf(currentUrl);
+    const nextProjectLink = document.getElementById('nextProjectLink');
+
+    if (currentIndexProject !== -1) {
+      const nextIndex = (currentIndexProject + 1) % projects.length;
+      nextProjectLink.href = projects[nextIndex];
+    } else {
+      nextProjectLink.href = projects[0];
+    }
+  </script>
+</body>
+
+</html>

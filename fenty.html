@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Leïa Bessad</title>
+  <link rel="stylesheet" href="2025site_page.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navigation principale">
+      <button class="close-btn" id="closeBtn" aria-label="Fermer le menu">✕</button>
+
+      <div>
+        <a href="nouveausite.html">
+          <img src="photo/logo2.png" class="logo" alt="Leïa Bessad">
+        </a>        <ul class="project-list">
+          <li><a href="hellmann.html">Ain't Your "Mayo"</a></li>
+          <li><a href="Easylove.html">Easy Love Story</a></li>
+          <li><a href="talentueux.html">Les Talentueux</a></li>
+          <li><a href="martine.html">Martine Cosmetics</a></li>
+          <li><a href="fenty.html" class="active">Fenty Skin</a></li>
+          <li><a href="VCF.html">Vintage Computer Festival</a></li>
+          <li><a href="femmesphotos.html">Que veulent les femmes ?</a></li>
+          <li><a href="laika.html">Laïka</a></li>
+          <li><a href="DMW.html">Drink More Water</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <ul class="info-list">
+          <li><a href="quizz.html" >SUIS-JE FAITE POUR VOUS ?</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="apropos.html#contact">Contact</a></li>
+        </ul>
+      </div>
+   
+    </aside>
+
+    <!-- Hamburger bouton -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+
+    <!-- Galerie principale -->
+    <main class="gallery">
+      <h1>Fenty Skin LipGloss</h1>
+
+
+    
+        <div class="tags-container">
+            <span class="tag category">Fenty liked it</span>
+        
+          <span class="tag category">3D</span>
+          <span class="tag category">Retouche photo</span>
+          <span class="tag category">Direction artistique</span>
+        
+      
+        <!-- Prix reçus -->
+      </div>
+     
+      <p>
+        Réalisation de visuels publicitaires pour le lip oil de la marque Fenty Skin.
+        Réalisés en 3D sur Blender, ces visuels s'imprègnent de l'esprit estival 
+        et coloré de la marque. Ici, un parallèle est fait entre la texture du lip oil, qui apparaît comme
+         aussi rafraîchissant et agréable que le fait de boire un cocktail en été.
+        </p>
+      
+       <br>
+       <br>
+      
+
+      <div class="image-grid">
+
+        <div class="image-grid-item col-3">
+          <img src="photo/fenty/liquid0.png" alt="">
+        </div>
+      
+        <div class="image-grid-item col-3">
+          <img src="photo/fenty/liquid1.png" alt="">
+        </div>
+      
+        <div class="image-grid-item col-3">
+          <img src="photo/fenty/liquid2.png" alt="">
+        </div>
+
+        <div class="image-grid-item col-3">
+          <img src="photo/fenty/liquid472.png" alt="">
+        </div>
+      
+      </div>
+
+      <div class="next-project">
+        <a id="nextProjectLink" href="martine.html">Projet suivant →</a>
+      </div>
+
+      
+     
+      
+      
+    </main>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <div class="lightbox-arrow left" id="prevArrow">❮</div>
+    <img id="lightboxImg" src="" alt="Zoom image">
+    <div class="lightbox-arrow right" id="nextArrow">❯</div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const prevArrow = document.getElementById('prevArrow');
+    const nextArrow = document.getElementById('nextArrow');
+    const images = document.querySelectorAll('.image-grid-item img');
+    let currentIndex = 0;
+
+    // Menu mobile
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    function closeMenu() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    overlay.addEventListener('click', closeMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Lightbox - ouvrir
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    // Lightbox - navigation
+    function showImage(index) {
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+    }
+
+    prevArrow.addEventListener('click', () => showImage(currentIndex - 1));
+    nextArrow.addEventListener('click', () => showImage(currentIndex + 1));
+
+    // Navigation clavier
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+
+    // Lightbox - fermer
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    // Lien projet suivant
+    const projects = [
+      "hellmann.html",
+      "Easylove.html",
+      "Talentueux.html",
+      "martine.html",
+      "fenty.html",
+      "VCF.html",
+      "femmesphotos.html",
+      "laika.html",
+      "DMW.html"
+    ];
+
+    const currentUrl = window.location.pathname.split("/").pop();
+    const currentIndexProject = projects.indexOf(currentUrl);
+    const nextProjectLink = document.getElementById('nextProjectLink');
+
+    if (currentIndexProject !== -1) {
+      const nextIndex = (currentIndexProject + 1) % projects.length;
+      nextProjectLink.href = projects[nextIndex];
+    } else {
+      nextProjectLink.href = projects[0];
+    }
+  </script>
+</body>
+</html>

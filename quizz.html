@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizz - Leïa Bessad</title>
+  <link rel="stylesheet" href="2025site_page.css">
+</head>
+
+<body>
+<div class="container">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div>
+      <a href="nouveausite.html">
+        <img src="photo/logo2.png" class="logo" alt="Leïa Bessad">
+      </a>
+        <ul class="project-list">
+        <li><a href="hellmann.html">Ain't Your "Mayo"</a></li>
+        <li><a href="Easylove.html">Easy Love Story</a></li>
+        <li><a href="talentueux.html">Les Talentueux</a></li>
+        <li><a href="project-5.html">Martine Cosmetics</a></li>
+        <li><a href="fenty.html">Fenty Skin</a></li>
+        <li><a href="VCF.html">Vintage Computer Festival</a></li>
+        <li><a href="femmesphotos.html">Que veulent les femmes ?</a></li>
+        <li><a href="project-6.html">Laïka</a></li>
+        <li><a href="DMW.html">Drink More Water</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul class="info-list">
+        <li><a href="quizz.html" >SUIS-JE FAITE POUR VOUS ?</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="apropos.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  
+  <div class="overlay" id="overlay"></div>
+  
+
+ 
+
+  <!-- Quiz -->
+  <main class="gallery">
+    <div class="quiz-board" id="board">
+      <svg class="quiz-lines" id="svg"></svg>
+      <div class="quiz-nodes" id="nodes"></div>
+    </div>
+  </main>
+</div>
+
+<script>
+const board = document.getElementById('board');
+const nodesWrap = document.getElementById('nodes');
+const nodeWidth = 260;
+const stepY = 150;
+const offsetX = 140;
+let path = [];
+
+function createNode(text, x, y, withButtons = true){
+  const el = document.createElement('div');
+  el.className = 'node';
+
+  // largeur seulement pour les questions avec boutons
+  if (withButtons) el.style.width = nodeWidth + 'px';
+
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+
+  const q = document.createElement('div');
+  q.className = 'q';
+  q.textContent = text;
+  el.appendChild(q);
+
+  if(withButtons){
+    const btns = document.createElement('div');
+    btns.className = 'btns';
+    ["oui","non"].forEach(val=>{
+      const b = document.createElement('button');
+      b.className = 'choice';
+      b.textContent = val.toUpperCase();
+      b.onclick = () => answer(el,val);
+      btns.appendChild(b);
+    });
+    el.appendChild(btns);
+  }
+
+  nodesWrap.appendChild(el);
+  return el;
+}
+
+
+function answer(node, answer){
+  path.push(answer);
+
+  const startX = parseFloat(node.style.left);
+  const startY = parseFloat(node.style.top);
+  const nextY = startY + stepY;
+  const nextX = answer === "oui" ? startX - offsetX : startX + offsetX;
+
+  // 1️⃣ désactiver tous les boutons
+  node.querySelectorAll("button").forEach(b => b.disabled = true);
+
+  // 2️⃣ ajouter la classe "selected" au bouton cliqué
+  const clickedBtn = Array.from(node.querySelectorAll("button")).find(b => b.textContent.toLowerCase() === answer);
+  if (clickedBtn) clickedBtn.classList.add("selected");
+
+  let text = "";
+  let final = false;
+
+ 
+
+  if(path.length===1){ text='FAITES-VOUS DES TRUCS COOLS ?'; }
+  if(path.length===2){ text='GAGNEZ-VOUS DES PRIX ?'; }
+  if(path.length === 3){
+  final = true;
+  const [q1, q2, q3] = path;
+
+  if(q1 === 'oui' && q2 === 'oui' && q3 === 'oui') 
+    text = 'JE SUIS LA PERSONNE QU’IL VOUS FAUT.';
+  if(q1 === 'oui' && q2 === 'oui' && q3 === 'non') 
+    text = 'JE SUIS LA PERSONNE QU’IL VOUS FAUT, Pour gagner des prix.';
+  if(q1 === 'oui' && q2 === 'non' && q3 === 'oui') 
+    text = 'JE SUIS LA PERSONNE QU’IL VOUS FAUT, POUR FAIRE DES TRUCS COOL.';
+  if(q1 === 'oui' && q2 === 'non' && q3 === 'non') 
+    text = 'JE SUIS LA PERSONNE QU’IL VOUS FAUT, POUR FAIRE DES TRUCS COOL.';
+  if(q1 === 'non' && q2 === 'oui' && q3 === 'oui') 
+    text = 'JE SUIS LA PERSONNE QU’IL VOUS FAUT, ON TROUVERA BIEN QUELQUE CHOSE À ME FAIRE FAIRE.';
+  if(q1 === 'non' && q2 === 'oui' && q3 === 'non') 
+    text = 'JE SUIS LA PERSONNE QU’IL VOUS FAUT, On trouvera bien un truc à me faire faire.';
+  if(q1 === 'non' && q2 === 'non' && q3 === 'oui') 
+    text = 'JE SUIS LA PERSONNE QU\'IL VOUS FAUT.';
+  if(q1 === 'non' && q2 === 'non' && q3 === 'non') 
+    text = 'JE NE SUIS PAS LA PERSONNE QU’IL VOUS FAUT.';
+}
+
+
+  createNode(text,nextX,nextY,!final);
+
+  if(final){
+    const r = document.createElement('button');
+    r.className='restart';
+    r.textContent='RECOMMENCER';
+    r.style.top = nextY+120+'px';
+    r.onclick=restart;
+    nodesWrap.appendChild(r);
+  }
+}
+
+function restart(){
+  nodesWrap.innerHTML='';
+  path=[];
+  start();
+}
+
+function start(){
+  const rect = board.getBoundingClientRect();
+  createNode('AVEZ-VOUS BESOIN D’UN CRÉATIF ?',rect.width/2-nodeWidth/2,20);
+}
+
+start();
+</script>
+</body>
+</html>
