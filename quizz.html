@@ -166,6 +166,29 @@ function start(){
 }
 
 start();
+
+  /* Mobile menu open/close (safely: only add listeners if elements existent) */
+if (hamburger && sidebar && overlay) {
+        hamburger.addEventListener('click', () => {
+          sidebar.classList.add('active');
+          overlay.classList.add('active');
+        });
+      }
+
+      const closeMenu = () => {
+        if (sidebar) sidebar.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+      };
+
+      if (overlay) overlay.addEventListener('click', closeMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+      /* Lightbox setup (graceful: only if lightbox elements exist) */
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const prevArrow = document.getElementById('prevArrow');
+      const nextArrow = document.getElementById('nextArrow');
 </script>
 </body>
 </html>
