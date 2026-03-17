@@ -402,8 +402,9 @@ transition: 0.3s;
     }
   }
 
- 
-
+ .concept {
+grid-template-columns: 1fr;
+ }
 
   /* --- Lightbox --- */
   .lightbox {
