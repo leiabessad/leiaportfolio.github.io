@@ -540,7 +540,6 @@ transition: 0.3s;
 .mail-link {
   color: #ff29a6;
   text-decoration: none;
-  border-bottom: 1px solid #ff29a6;
   transition: color 0.25s, border-color 0.25s;
 }
 
