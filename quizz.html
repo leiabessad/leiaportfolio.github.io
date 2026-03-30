@@ -189,6 +189,10 @@ function start(){
 
 start();
 
+  const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const closeBtn = document.querySelector('.close-btn');
   /* Mobile menu open/close (safely: only add listeners if elements existent) */
 if (hamburger && sidebar && overlay) {
         hamburger.addEventListener('click', () => {
