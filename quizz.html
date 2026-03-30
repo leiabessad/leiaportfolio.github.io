@@ -126,11 +126,11 @@ function answer(node, answer){
  
 
   if(path.length===1){ 
-  text = 'AVEZ-VOUS ENVIE DE FAIRE DES TRUCS COOLS ?'; 
+  text = 'FAITES VOUS DES TRUCS COOL ?'; 
 }
 
 if(path.length===2){ 
-  text = 'AIMERIEZ-VOUS GAGNER DES PRIX AU PASSAGE ?'; 
+  text = 'GAGNEZ VOUS DES PRIX ?'; 
 }
 
 if(path.length === 3){
@@ -142,25 +142,25 @@ if(path.length === 3){
     text = `PARFAIT. ON EST FAITS POUR S’ENTENDRE.<br>ÉCRIVEZ-MOI : ${mail}`;
 
   if(q1 === 'oui' && q2 === 'oui' && q3 === 'non') 
-    text = `ON PEUT FAIRE DES CHOSES TRÈS BIEN, MÊME SANS TROPHÉE.<br>ÉCRIVEZ-MOI : ${mail}`;
+    text = `JE SUIS FAITE POUR VOUS, POUR GAGNER DES PRIX.<br>ÉCRIVEZ-MOI : ${mail}`;
 
   if(q1 === 'oui' && q2 === 'non' && q3 === 'oui') 
-    text = `TRÈS BON PROGRAMME : DES IDÉES FORTES ET DES TRUCS COOLS.<br>ÉCRIVEZ-MOI : ${mail}`;
+    text = `JE SUIS LA PERSONNE QU’IL VOUS FAUT, POUR FAIRE DES TRUCS COOL.<br>ÉCRIVEZ-MOI : ${mail}`;
 
   if(q1 === 'oui' && q2 === 'non' && q3 === 'non') 
-    text = `PAS GRAVE, ON PEUT COMMENCER PAR FAIRE QUELQUE CHOSE DE BIEN.<br>ÉCRIVEZ-MOI : ${mail}`;
+    text = `JE SUIS LA PERSONNE QU’IL VOUS FAUT, POUR FAIRE DES TRUCS COOL ET GAGNER DES PRIX.<br>ÉCRIVEZ-MOI : ${mail}`;
 
   if(q1 === 'non' && q2 === 'oui' && q3 === 'oui') 
-    text = `ALORS IL VOUS FAUT PEUT-ÊTRE QUELQU’UN POUR METTRE TOUT ÇA EN FORME.<br>ÉCRIVEZ-MOI : ${mail}`;
+    text = `JE SUIS LA PERSONNE QU’IL VOUS FAUT, ON TROUVERA BIEN QUELQUE CHOSE À ME FAIRE FAIRE. <br>ÉCRIVEZ-MOI : ${mail}`;
 
   if(q1 === 'non' && q2 === 'oui' && q3 === 'non') 
-    text = `ON DIRAIT QUE JE PEUX VOUS ÊTRE UTILE PLUS VITE QUE PRÉVU.<br>ÉCRIVEZ-MOI : ${mail}`;
+    text = `IL SERAIT TEMPS D'ENGAGER DES CRÉATIFS (MOI).<br>ÉCRIVEZ-MOI : ${mail}`;
 
   if(q1 === 'non' && q2 === 'non' && q3 === 'oui') 
-    text = `IL Y A QUAND MÊME MATIÈRE À FAIRE QUELQUE CHOSE D’INTÉRESSANT.<br>ÉCRIVEZ-MOI : ${mail}`;
+    text = `IL SERAIT TEMPS D'ENGAGER DES CRÉATIFS (MOI).<br>ÉCRIVEZ-MOI : ${mail}`;
 
   if(q1 === 'non' && q2 === 'non' && q3 === 'non') 
-    text = `BON. IL EST PEUT-ÊTRE TEMPS D’AJOUTER UN PEU DE CRÉA LÀ-DEDANS.<br>ÉCRIVEZ-MOI : ${mail}`;
+    text = `BON. PEUT-ÊTRE QU'IL FAUDRAIT EMBAUCHER DES CRÉAS POUR FAIRE DES TRUCS COOL.<br>ÉCRIVEZ-MOI : ${mail}`;
 }
 
 
