@@ -303,13 +303,7 @@ margin: 5px 0;
 transition: 0.3s;
 }
 
-.concept {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
+
 
 .concept-item h3 {
   font-family: var(--font-title);
@@ -326,6 +320,14 @@ transition: 0.3s;
   line-height: 1.6;
 }
 
+.concept {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
 
 
   /* --- Sidebar mobile fermée --- */
@@ -333,6 +335,18 @@ transition: 0.3s;
 .container {
   grid-template-columns: 1fr;
 }
+
+.concept {
+  grid-template-columns: 1fr;
+}
+
+.concept-item p {
+  font-size: 14px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+
 
 .sidebar {
   position: fixed;
@@ -402,9 +416,8 @@ transition: 0.3s;
     }
   }
 
- .concept {
-grid-template-columns: 1fr;
- }
+ 
+
 
   /* --- Lightbox --- */
   .lightbox {
