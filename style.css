@@ -536,6 +536,18 @@ transition: 0.3s;
     font-size:16px;
     text-transform:uppercase;
   }
+
+.mail-link {
+  color: #ff29a6;
+  text-decoration: none;
+  border-bottom: 1px solid #ff29a6;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.mail-link:hover {
+  color: #00d9ff;
+  border-color: #00d9ff;
+}
   
 
 
