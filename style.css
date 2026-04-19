@@ -200,9 +200,6 @@ grid-column: span 6;
 }
 
 
-
-
-
 .tags-container {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -232,6 +229,17 @@ grid-column: span 6;
   border-color: #ff29a6;
 }
 
+.tag a {
+  color: #8e8e8e; /* Gris par défaut */
+  text-decoration: none;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+}
+
+.tag a:hover {
+  color: #00d9ff;
+}
+
+
 /* tag gagnant (ici c'est un <a>) */
 a.tag-gagnant {
   display: inline-block;
@@ -253,11 +261,7 @@ a.tag-gagnant:hover {
   color: #00d9ff;        /* texte */
   border-color: #00d9ff; /* contour */
 }
-
-
-  
-  
-  
+ 
   .tag.category {
     background-color: #ffffff;  /* bleu pour catégories */
   }
@@ -265,9 +269,6 @@ a.tag-gagnant:hover {
   .tag.award {
     background-color: #ffffff;  /* rose pour prix */
   }
-  
-
-
 
 
 /* Images responsive */
