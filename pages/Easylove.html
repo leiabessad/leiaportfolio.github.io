@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Easy Love Story - Leïa Bessad</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -19,27 +19,29 @@
 
       <div>
         <a href="index.html">
-          <img src="photo/logo2.png" class="logo" alt="Leïa Bessad">
-        </a>        <ul class="project-list">
-          <li><a href="hellmann.html">Ain't Your "Mayo"</a></li>
-          <li><a href="Easylove.html" class="active">Easy Love Story</a></li>
-          <li><a href="talentueux.html">Les Talentueux</a></li>
-          <li><a href="martine.html">Martine Cosmetics</a></li>
-          <li><a href="fenty.html">Fenty Skin</a></li>
-          <li><a href="VCF.html">Vintage Computer Festival</a></li>
-                    <li><a href="packaging.html">Packaging</a></li>
+          <img src="photo/homepage/logo2.png" class="logo" alt="Leïa Bessad">
+        </a>
+        <ul class="project-list">
+          <li><a href="pages/hellmann.html">Ain't Your "Mayo"</a></li>
+          <li><a href="pages/talentueux.html">Les Talentueux</a></li>
+          <li><a href="pages/femmesphotos.html">Que veulent les femmes ?</a></li>
+          <li><a href="pages/nefza.html">Nefza</a></li>
+          <li><a href="pages/fenty.html">Fenty Skin</a></li>
+          <li><a href="pages/DMW.html">Drink More Water</a></li>
+          <li><a href="pages/VCF.html">Vintage Computer Festival</a></li>
+          <li><a href="pages/laika.html">Laïka</a></li>
+          <li><a href="pages/Easylove.html class="active">Easy Love Story</a></li>
+          <li><a href="pages/martine.html">Martine Cosmetics</a></li>
+          <li><a href="pages/linkee.html">Le droit à +</a></li>
 
-          <li><a href="femmesphotos.html">Que veulent les femmes ?</a></li>
-          <li><a href="laika.html">Laïka</a></li>
-          <li><a href="DMW.html">Drink More Water</a></li>
         </ul>
       </div>
 
       <div>
         <ul class="info-list">
-          <li><a href="quizz.html" >SUIS-JE FAITE POUR VOUS ?</a></li>
-          <li><a href="apropos.html">À propos</a></li>
-          <li><a href="apropos.html#contact">Contact</a></li>
+          <li><a href="pages/quizz.html" >SUIS-JE FAITE POUR VOUS ?</a></li>
+          <li><a href="pages/apropos.html">À propos</a></li>
+          <li><a href="pages/apropos.html#contact">Contact</a></li>
         </ul>
       </div>
    
@@ -133,7 +135,7 @@
       </div>
 
       <div class="next-project">
-        <a id="nextProjectLink" href="queveulent.html">Projet suivant →</a>
+        <a id="nextProjectLink" href="martine.html">Projet suivant →</a>
       </div>
 
 
@@ -218,17 +220,19 @@
       }
     });
 
-    const projects = [
-  "hellmann.html",
-  "Easylove.html",
-  "Talentueux.html",
-  "femmesphotos.html",
-  "VCF.html",
-  "project-5.html",
-  "project-6.html",
-  "DMW.html",
-  "linkee.html"
-];
+     const projects = [
+      "pages/hellmann.html",
+      "pages/Talentueux.html",
+      "pages/femmesphotos.html",
+      "pages/nefza.html",
+      "pages/fenty.html",
+      "pages/DMW.html",
+      "pages/VCF.html",
+      "pages/laika.html",
+      "pages/Easylove.html",
+      "pages/martine.html",
+      "pages/linkee.html"
+      ];
 
 
     const currentUrl = window.location.pathname.split("/").pop();
