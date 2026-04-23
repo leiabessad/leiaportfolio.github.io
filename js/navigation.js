@@ -67,7 +67,7 @@
 
      const projects = [
       "hellmann.html",
-      "Talentueux.html",
+      "talentueux.html",
       "femmesphotos.html",
       "nefza.html",
       "fenty.html",
